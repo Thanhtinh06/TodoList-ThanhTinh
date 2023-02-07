@@ -14,25 +14,32 @@ class ListTask {
   };
   removeTask(idTask,isTodo=true){
     if(isTodo){
-      for(var i = 0; i < this.arrToDo.length;i++){
-        if(idTask == this.arrToDo[i].id){
-          return this.arrToDo.splice(i,1)
-        }
-      }
+      return this.arrToDo.splice(this.findTask(idTask),1)[0]
+    }else{
+      return this.arrCompleted.splice(this.findTask(idTask,this.arrCompleted),1)[0]
     }
   };
-  changeTask(){
-
+  changeTask(idTask){
+    let flagTodo = this.findTask(idTask);
+    let flagComplete = this.findTask(idTask,this.arrCompleted);
+    console.log(flagComplete);
+    if (flagTodo != null){
+      this.arrToDo[flagTodo].status = STATUS.completed;
+      this.arrCompleted.push(this.removeTask(idTask)) ;
+    }
+    if (flagComplete != null){
+      this.arrCompleted[flagComplete].status = STATUS.todo;
+      this.arrToDo.push(this.removeTask(idTask,false));
+    } 
   };
-  updateTask(idTask){
-    let taskUpdate = this.removeTask(idTask,true);
-    this.arrCompleted.push(taskUpdate);
-  };
-  findTask(){
 
-  };
-  getInforTask(){
-
+  findTask(idTask,arr=this.arrToDo){
+    for(var i=0; i < arr.length; i++){
+      if (idTask == arr[i].id){
+        return i
+      }
+    }
+    return null
   };
   removeAllTaskToDo(){
     this.arrToDo = [];

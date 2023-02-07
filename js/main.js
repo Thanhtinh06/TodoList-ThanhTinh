@@ -42,9 +42,7 @@ console.log(listTask.arrCompleted);
 //DOM Button Add
 
 getEle("addItem").addEventListener("click",function(){
-
   var task = getInforTask();
-  console.log(task);
   //add Task
   if (task != null){
     listTask.addTask(task);
@@ -57,6 +55,7 @@ getEle("addItem").addEventListener("click",function(){
 // Remove task
 function deleteToDo(idTask){
   listTask.removeTask(idTask,true);
+  listTask.removeTask(idTask,false);
   setLocalStage();
   getLocalStage();
 }
@@ -64,10 +63,9 @@ function deleteToDo(idTask){
 //Update task
 
 function completeToDo(idTask){
-  listTask.updateTask(idTask);
+  listTask.changeTask(idTask);
   setLocalStage();
   getLocalStage();
-  console.loge(listTask.arrCompleted);
 }
 
 
@@ -85,7 +83,7 @@ function getInforTask(){
 
 
 // render Table List Task
-function renderTable(data=listTask.arrToDo,isTodo=true){
+function renderTable(data=listTask.arrToDo,status=STATUS.todo,isTodo=true){
   let contentHTML = "";
   if(isTodo){
     data.forEach(function(task){
@@ -104,11 +102,10 @@ function renderTable(data=listTask.arrToDo,isTodo=true){
     </li>
     `
   });
-    getEle(STATUS.todo).innerHTML = contentHTML;
-  }else{
-    getEle(STATUS.completed).innerHTML = contentHTML;
+    getEle(status).innerHTML = contentHTML;
   }
 }
+
 
 
 //setLocalStage
@@ -125,6 +122,6 @@ function getLocalStage(){
   const dataStringDone = localStorage.getItem("ListTaskDone");
   listTask.arrToDo = JSON.parse(dataStringToDo) || [];
   listTask.arrCompleted = JSON.parse(dataStringDone) || [];
-  renderTable(listTask.arrToDo,true);
-  renderTable(listTask.arrCompleted,false);
+  renderTable(listTask.arrToDo,STATUS.todo);
+  renderTable(listTask.arrCompleted,STATUS.completed);
 }
