@@ -11,7 +11,6 @@ const STATUS = {
 
 const VALUE_ID = []
 
-
 const MIN_MAX = {
   min: 1,
   max:10000,

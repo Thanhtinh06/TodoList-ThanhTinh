@@ -6,12 +6,8 @@ Target: Manage task with features:
 + edit
 Created by: Thanh Tinh
 Date: 05/02/2023
-Version: 1.0
+Version: 1.0.0
 */
-
-function getEle(id) {
-  return document.getElementById(id);
-}
 
 /**
 1. DOM button add
@@ -22,7 +18,7 @@ function getEle(id) {
  - check duplicate: + true => Noti
                     + false => create Object Task
  - Object Task:
- + id: Math.random()
+ + id: getRanDomID()
  + content: get tag input
  + status: default todo(value)
 4. Add Object Task => ListTask
@@ -31,6 +27,10 @@ function getEle(id) {
  */
 
 
+function getEle(id) {
+  return document.getElementById(id);
+}
+
 //Create List Task Object
 
 const listTask = new ListTask();
@@ -38,7 +38,7 @@ const validation = new Validition();
 
 // //Get data from Local Stage
 getLocalStage();
-console.log(listTask.arrCompleted);
+
 //DOM Button Add
 
 getEle("addItem").addEventListener("click",function(){
@@ -60,7 +60,7 @@ function deleteToDo(idTask){
   getLocalStage();
 }
 
-//Update task
+//Change task
 
 function completeToDo(idTask){
   listTask.changeTask(idTask);
@@ -83,6 +83,7 @@ function getInforTask(){
 
 
 // render Table List Task
+
 function renderTable(data=listTask.arrToDo,status=STATUS.todo,isTodo=true){
   let contentHTML = "";
   if(isTodo){
@@ -105,7 +106,6 @@ function renderTable(data=listTask.arrToDo,status=STATUS.todo,isTodo=true){
     getEle(status).innerHTML = contentHTML;
   }
 }
-
 
 
 //setLocalStage

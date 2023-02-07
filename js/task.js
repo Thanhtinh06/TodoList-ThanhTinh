@@ -1,4 +1,10 @@
 class Task {
+  /**
+   * 
+   * @param {*} content value of tag input
+   * @param {*} status defaul is todo
+   * @property {*} id: get function ramdom
+   */
   constructor(content,status=STATUS.todo){
     this.content = content;
     this.status = status;

@@ -5,6 +5,13 @@ class ListTask {
     this.arrCompleted = []
   };
   //method
+
+  /**
+   * 
+   * @param {*} task type object
+   * @param {*} isTodo type boolean to define where is a task in?
+   * feature: add to arr To Do or Complete
+   */
   addTask(task,isTodo=true) {
     if(isTodo){
       this.arrToDo.push(task);
@@ -12,6 +19,13 @@ class ListTask {
       this.arrCompleted.push(task);
     }
   };
+
+  /**
+   * 
+   * @param {*} idTask : id of task (unique)
+   * @param {*} isTodo : to check where is task in 
+   * @returns object 
+   */
   removeTask(idTask,isTodo=true){
     if(isTodo){
       return this.arrToDo.splice(this.findTask(idTask),1)[0]
@@ -19,6 +33,8 @@ class ListTask {
       return this.arrCompleted.splice(this.findTask(idTask,this.arrCompleted),1)[0]
     }
   };
+
+
   changeTask(idTask){
     let flagTodo = this.findTask(idTask);
     let flagComplete = this.findTask(idTask,this.arrCompleted);
@@ -41,6 +57,7 @@ class ListTask {
     }
     return null
   };
+  
   removeAllTaskToDo(){
     this.arrToDo = [];
   }
