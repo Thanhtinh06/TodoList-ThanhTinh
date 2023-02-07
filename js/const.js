@@ -9,6 +9,8 @@ const STATUS = {
   completed: "completed",
 }
 
+//To create unique int id
+
 const VALUE_ID = []
 
 const MIN_MAX = {

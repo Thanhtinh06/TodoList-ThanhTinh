@@ -31,6 +31,18 @@ function getEle(id) {
   return document.getElementById(id);
 }
 
+let date = new Date();
+let formattedDate = date.toLocaleDateString("en-GB", {
+  time: "",
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric",
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+});
+getEle("today").innerHTML = formattedDate;
+
 //Create List Task Object
 
 const listTask = new ListTask();

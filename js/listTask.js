@@ -57,7 +57,7 @@ class ListTask {
     }
     return null
   };
-  
+
   removeAllTaskToDo(){
     this.arrToDo = [];
   }
