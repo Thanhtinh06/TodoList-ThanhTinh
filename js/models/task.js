@@ -19,11 +19,3 @@ class Task {
    return id
   }
 }
-
-  /**
-   * Cach 2: Lay tu Date.now()
-   */
-
- // this.id = Date.now();
-    // //to reload page create new value 
-    // location.reload();
