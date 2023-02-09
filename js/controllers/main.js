@@ -31,6 +31,8 @@ function getEle(id) {
   return document.getElementById(id);
 }
 
+
+//Show date now
 let date = new Date();
 let formattedDate = date.toLocaleDateString("en-GB", {
   time: "",
@@ -60,7 +62,8 @@ getEle("addItem").addEventListener("click",function(){
     listTask.addTask(task);
     setLocalStage();
   };
-  getLocalStage()
+  getLocalStage();
+  clearInput();
 })
 
 
@@ -101,8 +104,8 @@ function renderTable(data=listTask.arrToDo,status=STATUS.todo,isTodo=true){
   if(isTodo){
     data.forEach(function(task){
     contentHTML += `
-    <li id="${task.id}">
-      <span>${task.content}</span>
+    <li>
+      <span id="${task.id}">${task.content}</span>
       <div class="buttons">
       <button class="remove" data-index="0" data-status="${task.status}" onclick="deleteToDo(${task.id})">
                             <i class="fa fa-trash-alt"></i>
@@ -117,6 +120,12 @@ function renderTable(data=listTask.arrToDo,status=STATUS.todo,isTodo=true){
   });
     getEle(status).innerHTML = contentHTML;
   }
+}
+
+//clear input 
+
+function clearInput() {  // Clear the input field
+  return getEle("newTask").value = "";
 }
 
 

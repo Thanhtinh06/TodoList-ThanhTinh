@@ -38,7 +38,6 @@ class ListTask {
   changeTask(idTask){
     let flagTodo = this.findTask(idTask);
     let flagComplete = this.findTask(idTask,this.arrCompleted);
-    console.log(flagComplete);
     if (flagTodo != null){
       this.arrToDo[flagTodo].status = STATUS.completed;
       this.arrCompleted.push(this.removeTask(idTask)) ;
@@ -57,11 +56,4 @@ class ListTask {
     }
     return null
   };
-
-  removeAllTaskToDo(){
-    this.arrToDo = [];
-  }
-  removeAllTaskCompleted(){
-    this.arrCompleted = [];
-  }
 }

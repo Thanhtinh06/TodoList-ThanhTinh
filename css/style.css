@@ -279,8 +279,20 @@ ul.todo li .buttons button {
   cursor: pointer;
   position: relative;
   padding: 5px 0 5px 5px;
-  font-size: 1rem;
+  font-size: 1rem; 
 }
+
+ul.todo li .buttons .edit {
+  color: #aaa;
+}
+
+ul.todo li .buttons .edit .fa-pen::before {
+  content: "\f304";
+}
+ul.todo li .buttons .edit:hover {
+  color:cornflowerblue;
+}
+
 ul.todo li .buttons .remove {
   color: #aaa;
 }
